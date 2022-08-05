@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { View } from 'react-native';
+import ReceitasList from './ReceitasList.js'
+import AlimentoReceita from './AlimentoReceita.js'
+import dados from './data/alimentos.json'
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+export default class App extends React.Component {
+
+  state = {
+    alimentoSelecionado: null
+  }
+  render() {
+    return (
+      <View>
+        {this.state.alimentoSelecionado == null && (
+          <ReceitasList
+            data={dados}
+            onPress={(alimento) => this.setState({ alimentoSelecionado: alimento })} />
+        )}
+
+        {this.state.alimentoSelecionado != null && (
+          <AlimentoReceita 
+            alimento={ this.state.alimentoSelecionado }
+            onClosed={ () => {
+              this.setState({ alimentoSelecionado : null })
+            } } />
+        )}
+
+      </View>
+    )
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
