@@ -1,11 +1,10 @@
 {
   "expo": {
     "name": "bright-mobile",
-    "slug": "bright-mobile",
+    "slug": "snack-0883e036-f914-4293-a5f9-e55e4ee8348a",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
