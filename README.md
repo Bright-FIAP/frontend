@@ -1,21 +1,11 @@
-# React Native School Expo Template
-
-A simple Expo template with the following features:
-
-- Eslint & Prettier configured
-- React Navigation v6
-- Testing Configured
-- Simple project structure
-- Small component library to get started with
-
-It's easy to create a project, strip out the few components included, and still have the architecture in place to quickly start building an app.
+# React Native
 
 ## Usage
 
-> Be sure to have the [Expo CLI](https://docs.expo.io/workflow/expo-cli/) installed.
+> Be sure to have the [git](link git) installed.
 
 ```bash
-expo init --template @react-native-school/expo-template
+git clone bla bla
 ```
 
 - Run on iOS: `yarn ios` or `npm run ios`
@@ -25,16 +15,3 @@ expo init --template @react-native-school/expo-template
 - Lint Code: `yarn lint` or `npm run lint`
 - Format Code: `yarn format` or `npm run format`
 
-## Screenshots
-
-List Screen
-![List Screen](./assets/screenshots/list.png)
-
-Text Screen
-![Text Screen](./assets/screenshots/text.png)
-
-Form Screen
-![Form Screen](./assets/screenshots/form.png)
-
-Button Screen
-![Button Screen](./assets/screenshots/button.png)
