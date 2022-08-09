@@ -1,11 +1,40 @@
-# Sample Snack app
+# React Native School Expo Template
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by scanning the **QR code** or use the iOS or Android emulators. When you're done, click **Save** and share the link!
+A simple Expo template with the following features:
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Download** your project and use it with [expo-cli](https://docs.expo.io/get-started/installation).
+- Eslint & Prettier configured
+- React Navigation v6
+- Testing Configured
+- Simple project structure
+- Small component library to get started with
 
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the `<>` button.
+It's easy to create a project, strip out the few components included, and still have the architecture in place to quickly start building an app.
 
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.io/c/snack).
+## Usage
 
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack).
+> Be sure to have the [Expo CLI](https://docs.expo.io/workflow/expo-cli/) installed.
+
+```bash
+expo init --template @react-native-school/expo-template
+```
+
+- Run on iOS: `yarn ios` or `npm run ios`
+- Run on Android: `yarn android` or `npm run android`
+- Run on Web: `yarn web` or `npm run web`
+- Run Tests: `yarn test` or `npm run test`
+- Lint Code: `yarn lint` or `npm run lint`
+- Format Code: `yarn format` or `npm run format`
+
+## Screenshots
+
+List Screen
+![List Screen](./assets/screenshots/list.png)
+
+Text Screen
+![Text Screen](./assets/screenshots/text.png)
+
+Form Screen
+![Form Screen](./assets/screenshots/form.png)
+
+Button Screen
+![Button Screen](./assets/screenshots/button.png)
