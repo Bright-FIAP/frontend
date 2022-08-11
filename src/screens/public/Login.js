@@ -1,6 +1,12 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 
 import colors from '../../constants/colors';
 import { Button } from '../../components/Button';
@@ -14,11 +20,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     padding: 40,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   logo: {
-    width: 301,
-    height: 159,
+    width: 210,
+    height: 130,
     alignSelf: 'center',
   },
 });
@@ -27,11 +33,12 @@ export const Login = props => {
   const { submit, errors, email, setEmail, password, setPassword } = useLogin();
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={logo}
-        style={styles.logo}
-      />
+    <KeyboardAvoidingView
+      enabled={Platform.OS === 'ios'}
+      behavior="padding"
+      style={styles.container}
+    >
+      <Image source={logo} style={styles.logo} />
       {/* <Text type="header" style={{ textAlign: 'center' }}>
         Login
       </Text> */}
@@ -54,8 +61,10 @@ export const Login = props => {
       <Button type="secondary" onPress={() => submit(props.navigation)}>
         Entrar
       </Button>
-      <TouchableOpacity onPress={() => props.navigation.navigate('RecoveryAccount')}>
-        <Text style={{ textAlign: 'center', marginBottom: 16 }}>
+      <TouchableOpacity
+        onPress={() => props.navigation.navigate('RecoveryAccount')}
+      >
+        <Text style={{ textAlign: 'center', marginBottom: 32 }}>
           Esqueceu a senha?
         </Text>
       </TouchableOpacity>
@@ -70,6 +79,6 @@ export const Login = props => {
       <Button onPress={() => props.navigation.navigate('Register')}>
         Criar Nova Conta
       </Button>
-    </View>
+    </KeyboardAvoidingView>
   );
 };

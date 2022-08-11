@@ -6,17 +6,17 @@ import colors from '../constants/colors';
 
 const styles = StyleSheet.create({
   inputContainer: {
-    marginBottom: 8,
+    marginBottom: 4,
   },
   labelText: {
     color: colors.gray,
     fontSize: 18,
-    marginBottom: 8,
+    marginBottom: 4
   },
   textInput: {
     fontSize: 20,
     fontWeight: '500',
-    paddingBottom: 10,
+    paddingBottom: 8,
   },
   border: {
     height: 1,

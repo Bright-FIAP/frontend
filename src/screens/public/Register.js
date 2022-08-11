@@ -14,17 +14,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     padding: 40,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   logo: {
-    width: 301,
-    height: 159,
+    width: 210,
+    height: 130,
     alignSelf: 'center',
   },
 });
 
 export const Register = props => {
-  const { submit, errors, name, setName, email, setEmail, password, setPassword } = useRegister();
+  const {
+    submit,
+    errors,
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useRegister();
 
   return (
     <View style={styles.container}>
@@ -63,7 +72,6 @@ export const Register = props => {
           Já tem uma conta? Conecte-se
         </Text>
       </TouchableOpacity>
-    
     </View>
   );
 };
