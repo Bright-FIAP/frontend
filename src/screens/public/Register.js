@@ -6,7 +6,7 @@ import colors from '../../constants/colors';
 import { Button } from '../../components/Button';
 import { TextInput } from '../../components/Form';
 import { useRegister } from '../../util/auth';
-import logo from '../../../assets/bright-logo.jpeg';
+import logo from '../../../assets/bright-logo.png';
 import { Text } from '../../components/Text';
 
 const styles = StyleSheet.create({

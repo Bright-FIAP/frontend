@@ -13,7 +13,7 @@ import { Button } from '../../components/Button';
 import { TextInput } from '../../components/Form';
 import { useLogin } from '../../util/auth';
 import { Text } from '../../components/Text';
-import logo from '../../../assets/bright-logo.jpeg';
+import logo from '../../../assets/bright-logo.png';
 
 const styles = StyleSheet.create({
   container: {
