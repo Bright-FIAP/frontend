@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Alert } from 'react-native';
+import userService from '../services/UserService';
 
 export const useLogin = () => {
   const [email, setEmail] = React.useState('');
@@ -23,10 +24,23 @@ export const useLogin = () => {
       return null;
     }
     console.log(navigation);
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'InsideApp' }],
-    });
+
+    let data = {
+      email: email,
+      senha: password,
+    };
+
+    userService
+      .login(data)
+      .then(response => {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'InsideApp' }],
+        });
+      })
+      .catch(error => {
+        Alert.alert('Usuário não existe');
+      });
 
     Alert.alert('Success!', `Email: ${email} \n Password: ${password}`);
     return null;
@@ -68,10 +82,22 @@ export const useRegister = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'InsideApp' }],
-    });
+    let data = {
+      email: email,
+      senha: password,
+    };
+
+    userService
+      .register(data)
+      .then(response => {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'InsideApp' }],
+        });
+      })
+      .catch(error => {
+        Alert.alert('Usuário não existe');
+      });
 
     Alert.alert(
       'Success!',
