@@ -11,23 +11,30 @@ import { Settings } from '../screens/private/Settings';
 import { Login } from '../screens/public/Login';
 import { Register } from '../screens/public/Register';
 import { RecoveryAccount } from '../screens/public/RecoveryAccount';
+import { View } from 'react-native';
 
 const MainStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
 
 function InsideTabs() {
   return (
-    <MainTab.Navigator screenOptions={{ headerShown: false }}>
+    <MainTab.Navigator
+      defaultScreenOptions={List}
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#ffcd0e',
+      }}
+    >
       <MainTab.Screen
         name="TextDemo"
         component={TextDemo}
         options={{
           title: 'Receitas',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, focused, size }) => (
             <MaterialCommunityIcons
               name="pot-steam-outline"
               color={color}
-              size={size}
+              size={focused ? size + 2 : size}
             />
           ),
         }}
@@ -37,8 +44,12 @@ function InsideTabs() {
         component={List}
         options={{
           title: 'ChefBot',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="md-chatbubbles-outline" color={color} size={size} />
+          tabBarIcon: ({ color, focused, size }) => (
+            <Ionicons
+              name="md-chatbubbles-outline"
+              color={color}
+              size={focused ? size + 2 : size}
+            />
           ),
         }}
       />
@@ -52,8 +63,12 @@ function InsideTabs() {
         component={Settings}
         options={{
           title: 'Configurações',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" color={color} size={size} />
+          tabBarIcon: ({ color, focused, size }) => (
+            <Ionicons
+              name="settings-outline"
+              color={color}
+              size={focused ? size + 2 : size}
+            />
           ),
         }}
       />
