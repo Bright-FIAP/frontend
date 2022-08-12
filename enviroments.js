@@ -4,9 +4,6 @@ import { Platform } from 'react-native';
 
 const localhost = Platform.OS !== 'ios' ? 'http://localhost:8080/api/v1/' : '10.0.2.2:8080';
 const apiHeroku = 'https://chefbot-api.herokuapp.com/api/v1/';
-//const apiHerokuNoCors = `${noCors}${apiHeroku}`
-const apiHerokuNoCors = `https://cors-anywhere.herokuapp.com/http://localhost:8080/api/v1/`
-const noCors = 'https://cors-anywhere.herokuapp.com/'
 
 const ENV = {
   dev: {

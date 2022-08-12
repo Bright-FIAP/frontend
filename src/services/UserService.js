@@ -31,7 +31,7 @@ class UserService {
       data: data,
     })
       .then(response => {
-        AsyncStorage.setItem('TOKEN', response.data.access_token);
+        //AsyncStorage.setItem('TOKEN', response.data.access_token);
         return Promise.resolve(response);
       })
       .catch(error => {
@@ -50,7 +50,7 @@ class UserService {
     })
       .then(response => {
         if (response.data.access_token) {
-          AsyncStorage.setItem('TOKEN', response.data.access_token);
+          //AsyncStorage.setItem('TOKEN', response.data.access_token);
           return Promise.resolve(response);
         } else {
           return Promise.reject(response);

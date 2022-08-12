@@ -33,16 +33,17 @@ export const useLogin = () => {
     userService
       .login(data)
       .then(response => {
+        console.log(response);
         navigation.reset({
           index: 0,
           routes: [{ name: 'InsideApp' }],
         });
+        Alert.alert('Success!', `Email: ${email} \n Password: ${password}`);
       })
       .catch(error => {
         Alert.alert('Usuário não existe');
       });
 
-    Alert.alert('Success!', `Email: ${email} \n Password: ${password}`);
     return null;
   };
 
@@ -83,6 +84,7 @@ export const useRegister = () => {
       return null;
     }
     let data = {
+      nome: name,
       email: email,
       senha: password,
     };
@@ -94,15 +96,15 @@ export const useRegister = () => {
           index: 0,
           routes: [{ name: 'InsideApp' }],
         });
+        Alert.alert(
+          'Success!',
+          `Nome: ${name} \n Email: ${email} \n Password: ${password}`,
+        );
       })
       .catch(error => {
         Alert.alert('Usuário não existe');
       });
 
-    Alert.alert(
-      'Success!',
-      `Nome: ${name} \n Email: ${email} \n Password: ${password}`,
-    );
     return null;
   };
 
