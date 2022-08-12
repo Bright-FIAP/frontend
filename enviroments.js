@@ -10,7 +10,7 @@ const noCors = 'https://cors-anywhere.herokuapp.com/'
 
 const ENV = {
   dev: {
-    API_URL: localhost,
+    API_URL: apiHeroku,
     amplitudeApiKey: null,
   },
   staging: {

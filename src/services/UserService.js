@@ -10,10 +10,7 @@ class UserService {
   async register(data) {
     return axios({
       url: API_URL + 'usuario/cadastrar',
-      mode: 'no-cors',
       headers: Config.HEADER_REQUEST,
-      withCredentials: true,
-      credentials: 'same-origin',
       method: 'POST',
       timeout: Config.TIMEOUT_REQUEST,
       data: data,
@@ -28,10 +25,7 @@ class UserService {
 
   async login(data) {
     return axios(API_URL + 'usuario/login',{
-      mode: 'no-cors',
       headers: Config.HEADER_REQUEST,
-      withCredentials: true,
-      credentials: 'same-origin',
       method: 'POST',
       timeout: Config.TIMEOUT_REQUEST,
       data: data,
@@ -41,6 +35,7 @@ class UserService {
         return Promise.resolve(response);
       })
       .catch(error => {
+        alert("Email ou senha inválidos.")
         return Promise.reject(error);
       });
   }
