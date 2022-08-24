@@ -23,27 +23,24 @@ export const useLogin = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    console.log(navigation);
-
     let data = {
       email: email,
       senha: password,
     };
 
-    userService
-      .login(data)
-      .then(response => {
-        console.log(response);
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'InsideApp' }],
-        });
-        Alert.alert('Success!', `Email: ${email} \n Password: ${password}`);
-      })
-      .catch(error => {
-        Alert.alert('Usuário não existe');
+    userService.login(data).then(response => {
+      const resetAction = navigation.reset({
+        index: 0,
+        actions: [
+          navigation.navigate('InsideApp', {
+            screen: 'Chat',
+            params: { user: response.data },
+          }),
+        ],
       });
-
+      navigation.dispatch(resetAction);
+      alert('Success!', `Email: ${email} \n Password: ${password}`);
+    });
     return null;
   };
 
@@ -89,21 +86,18 @@ export const useRegister = () => {
       senha: password,
     };
 
-    userService
-      .register(data)
-      .then(response => {
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'InsideApp' }],
-        });
-        Alert.alert(
-          'Success!',
-          `Nome: ${name} \n Email: ${email} \n Password: ${password}`,
-        );
-      })
-      .catch(error => {
-        Alert.alert('Usuário não existe');
+    userService.register(data).then(response => {
+      const resetAction = navigation.reset({
+        index: 0,
+        actions: [
+          navigation.navigate('InsideApp', {
+            screen: 'Chat',
+            params: { user: response.data },
+          }),
+        ],
       });
+      navigation.dispatch(resetAction);
+    });
 
     return null;
   };
@@ -139,7 +133,6 @@ export const useRecoveryAccount = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    console.log(navigation);
     navigation.reset({
       index: 0,
       routes: [{ name: 'Login' }],

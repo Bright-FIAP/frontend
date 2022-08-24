@@ -4,10 +4,12 @@ import { Platform } from 'react-native';
 
 const localhost = Platform.OS !== 'ios' ? 'http://localhost:8080/api/v1/' : '10.0.2.2:8080';
 const apiHeroku = 'https://chefbot-api.herokuapp.com/api/v1/';
+const apiNodeRed = 'https://noderedkaike.mybluemix.net/chefbot';
 
 const ENV = {
   dev: {
     API_URL: apiHeroku,
+    API_NODE_RED: apiNodeRed,
     amplitudeApiKey: null,
   },
   staging: {

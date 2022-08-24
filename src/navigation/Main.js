@@ -4,14 +4,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { List } from '../screens/List';
 import { TextDemo } from '../screens/Demos';
 import { Settings } from '../screens/private/Settings';
+import {Chat} from '../screens/private/Chat';
+
 
 import { Login } from '../screens/public/Login';
 import { Register } from '../screens/public/Register';
 import { RecoveryAccount } from '../screens/public/RecoveryAccount';
-import { View } from 'react-native';
 
 const MainStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
@@ -19,7 +19,7 @@ const MainTab = createBottomTabNavigator();
 function InsideTabs() {
   return (
     <MainTab.Navigator
-      defaultScreenOptions={List}
+      defaultScreenOptions={Chat}
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#ffcd0e',
@@ -40,8 +40,8 @@ function InsideTabs() {
         }}
       />
       <MainTab.Screen
-        name="List"
-        component={List}
+        name="Chat"
+        component={Chat}
         options={{
           title: 'ChefBot',
           tabBarIcon: ({ color, focused, size }) => (
