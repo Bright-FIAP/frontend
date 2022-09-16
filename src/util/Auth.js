@@ -23,6 +23,7 @@ export const useLogin = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
+
     let data = {
       email: email,
       senha: password,
@@ -58,7 +59,7 @@ export const useRegister = () => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  //const [uf, setUf] = React.useState('');
+  // const [uf, setUf] = React.useState('');
   const [errors, setErrors] = React.useState({});
 
   const submit = navigation => {
