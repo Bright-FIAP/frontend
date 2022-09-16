@@ -6,8 +6,7 @@ import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { TextDemo } from '../screens/Demos';
 import { Settings } from '../screens/private/Settings';
-import {Chat} from '../screens/private/Chat';
-
+import { Chat } from '../screens/private/Chat';
 
 import { Login } from '../screens/public/Login';
 import { Register } from '../screens/public/Register';
@@ -53,11 +52,6 @@ function InsideTabs() {
           ),
         }}
       />
-      {/* <MainTab.Screen
-        name="FormDemo"
-        component={FormDemo}
-        options={{ headerTitle: 'Button Demo' }}
-      /> */}
       <MainTab.Screen
         name="Settings"
         component={Settings}

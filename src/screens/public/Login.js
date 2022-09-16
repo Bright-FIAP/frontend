@@ -11,7 +11,7 @@ import {
 import colors from '../../constants/colors';
 import { Button } from '../../components/Button';
 import { TextInput } from '../../components/Form';
-import { useLogin } from '../../util/auth';
+import { useLogin } from '../../util/Auth';
 import { Text } from '../../components/Text';
 import logo from '../../../assets/bright-logo.png';
 

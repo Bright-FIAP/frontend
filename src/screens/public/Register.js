@@ -5,7 +5,7 @@ import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import colors from '../../constants/colors';
 import { Button } from '../../components/Button';
 import { TextInput } from '../../components/Form';
-import { useRegister } from '../../util/auth';
+import { useRegister } from '../../util/Auth';
 import logo from '../../../assets/bright-logo.png';
 import { Text } from '../../components/Text';
 

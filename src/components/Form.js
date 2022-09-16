@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   labelText: {
     color: colors.gray,
     fontSize: 18,
-    marginBottom: 4
+    marginBottom: 4,
   },
   textInput: {
     fontSize: 20,
