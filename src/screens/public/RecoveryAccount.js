@@ -7,7 +7,7 @@ import colors from '../../constants/colors';
 import { Button } from '../../components/Button';
 import { TextInput } from '../../components/Form';
 import { Text } from '../../components/Text';
-import { useRecoveryAccount } from '../../util/auth';
+import { useRecoveryAccount } from '../../util/Auth';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   iconCenter: {
     alignSelf: 'center',
-    padding: 10
+    padding: 10,
   },
 });
 
@@ -32,10 +32,15 @@ export const RecoveryAccount = props => {
 
   return (
     <View style={styles.container}>
-      <SimpleLineIcons style={styles.iconCenter} name="lock" color="black" size={100} />
+      <SimpleLineIcons
+        style={styles.iconCenter}
+        name="lock"
+        color="black"
+        size={100}
+      />
       <Text style={{ textAlign: 'center', marginBottom: 16 }}>
-        Insira o seu email e enviaremos um link
-        para você voltar a acessar a sua conta.
+        Insira o seu email e enviaremos um link para você voltar a acessar a sua
+        conta.
       </Text>
       <TextInput
         placeholder="Email"
@@ -49,9 +54,7 @@ export const RecoveryAccount = props => {
         Enviar link para Login
       </Button>
       <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
-        <Text style={{ textAlign: 'center', marginBottom: 16 }}>
-         Voltar
-        </Text>
+        <Text style={{ textAlign: 'center', marginBottom: 16 }}>Voltar</Text>
       </TouchableOpacity>
     </View>
   );

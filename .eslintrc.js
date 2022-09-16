@@ -9,4 +9,10 @@ module.exports = {
     __DEV__: 'readonly',
   },
   plugins: [],
+  'prettier/prettier': [
+    'error',
+    {
+      endOfLine: 'auto',
+    },
+  ],
 };

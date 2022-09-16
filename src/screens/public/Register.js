@@ -5,8 +5,8 @@ import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import colors from '../../constants/colors';
 import { Button } from '../../components/Button';
 import { TextInput } from '../../components/Form';
-import { useRegister } from '../../util/auth';
-import logo from '../../../assets/bright-logo.jpeg';
+import { useRegister } from '../../util/Auth';
+import logo from '../../../assets/bright-logo.png';
 import { Text } from '../../components/Text';
 
 const styles = StyleSheet.create({
@@ -14,17 +14,26 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     padding: 40,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   logo: {
-    width: 301,
-    height: 159,
+    width: 210,
+    height: 130,
     alignSelf: 'center',
   },
 });
 
 export const Register = props => {
-  const { submit, errors, name, setName, email, setEmail, password, setPassword } = useRegister();
+  const {
+    submit,
+    errors,
+    name,
+    setName,
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useRegister();
 
   return (
     <View style={styles.container}>
@@ -63,7 +72,6 @@ export const Register = props => {
           Já tem uma conta? Conecte-se
         </Text>
       </TouchableOpacity>
-    
     </View>
   );
 };
