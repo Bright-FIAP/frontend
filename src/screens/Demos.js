@@ -5,7 +5,7 @@ import colors from '../constants/colors';
 import { Text } from '../components/Text';
 import { Button } from '../components/Button';
 import { TextInput } from '../components/Form';
-import { useLogin } from '../util/auth';
+import { useLogin } from '../util/Auth';
 
 const styles = StyleSheet.create({
   container: {
