@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Alert } from 'react-native';
+import userService from '../services/UserService';
 
 export const useLogin = () => {
   const [email, setEmail] = React.useState('');
@@ -22,13 +23,24 @@ export const useLogin = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    console.log(navigation);
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'InsideApp' }],
-    });
+    const data = {
+      email,
+      senha: password,
+    };
 
-    Alert.alert('Success!', `Email: ${email} \n Password: ${password}`);
+    userService.login(data).then(response => {
+      const resetAction = navigation.reset({
+        index: 0,
+        actions: [
+          navigation.navigate('InsideApp', {
+            screen: 'Chat',
+            params: { user: response.data },
+          }),
+        ],
+      });
+      navigation.dispatch(resetAction);
+      alert('Success!', `Email: ${email} \n Password: ${password}`);
+    });
     return null;
   };
 
@@ -46,7 +58,7 @@ export const useRegister = () => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  //const [uf, setUf] = React.useState('');
+  // const [uf, setUf] = React.useState('');
   const [errors, setErrors] = React.useState({});
 
   const submit = navigation => {
@@ -68,15 +80,25 @@ export const useRegister = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'InsideApp' }],
+    const data = {
+      nome: name,
+      email,
+      senha: password,
+    };
+
+    userService.register(data).then(response => {
+      const resetAction = navigation.reset({
+        index: 0,
+        actions: [
+          navigation.navigate('InsideApp', {
+            screen: 'Chat',
+            params: { user: response.data },
+          }),
+        ],
+      });
+      navigation.dispatch(resetAction);
     });
 
-    Alert.alert(
-      'Success!',
-      `Nome: ${name} \n Email: ${email} \n Password: ${password}`,
-    );
     return null;
   };
 
@@ -111,7 +133,6 @@ export const useRecoveryAccount = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    console.log(navigation);
     navigation.reset({
       index: 0,
       routes: [{ name: 'Login' }],
