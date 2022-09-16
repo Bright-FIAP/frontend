@@ -4,9 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { List } from '../screens/List';
 import { TextDemo } from '../screens/Demos';
 import { Settings } from '../screens/private/Settings';
+import { Chat } from '../screens/private/Chat';
 
 import { Login } from '../screens/public/Login';
 import { Register } from '../screens/public/Register';
@@ -17,43 +17,52 @@ const MainTab = createBottomTabNavigator();
 
 function InsideTabs() {
   return (
-    <MainTab.Navigator screenOptions={{ headerShown: false }}>
+    <MainTab.Navigator
+      defaultScreenOptions={Chat}
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#ffcd0e',
+      }}
+    >
       <MainTab.Screen
         name="TextDemo"
         component={TextDemo}
         options={{
           title: 'Receitas',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, focused, size }) => (
             <MaterialCommunityIcons
               name="pot-steam-outline"
               color={color}
-              size={size}
+              size={focused ? size + 2 : size}
             />
           ),
         }}
       />
       <MainTab.Screen
-        name="List"
-        component={List}
+        name="Chat"
+        component={Chat}
         options={{
           title: 'ChefBot',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="md-chatbubbles-outline" color={color} size={size} />
+          tabBarIcon: ({ color, focused, size }) => (
+            <Ionicons
+              name="md-chatbubbles-outline"
+              color={color}
+              size={focused ? size + 2 : size}
+            />
           ),
         }}
       />
-      {/* <MainTab.Screen
-        name="FormDemo"
-        component={FormDemo}
-        options={{ headerTitle: 'Button Demo' }}
-      /> */}
       <MainTab.Screen
         name="Settings"
         component={Settings}
         options={{
           title: 'Configurações',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" color={color} size={size} />
+          tabBarIcon: ({ color, focused, size }) => (
+            <Ionicons
+              name="settings-outline"
+              color={color}
+              size={focused ? size + 2 : size}
+            />
           ),
         }}
       />

@@ -23,8 +23,9 @@ export const useLogin = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    const data = {
-      email,
+
+    let data = {
+      email: email,
       senha: password,
     };
 
@@ -80,9 +81,9 @@ export const useRegister = () => {
     if (Object.keys(nextErrors).length > 0) {
       return null;
     }
-    const data = {
+    let data = {
       nome: name,
-      email,
+      email: email,
       senha: password,
     };
 
