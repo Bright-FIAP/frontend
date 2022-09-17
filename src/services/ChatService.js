@@ -1,10 +1,9 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import getEnvVars from '../../enviroments';
 import Config from "../util/Config"
 
 
-const { API_NODE_RED } = getEnvVars();
+const API_NODE_RED = 'https://noderedkaike.mybluemix.net/chefbot';
+
 
 class ChatService {
   async send(data) {

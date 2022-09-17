@@ -1,10 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
-import getEnvVars from '../../enviroments';
 import Config from "../util/Config"
 
 
-const { API_URL } = getEnvVars();
+const API_URL = 'https://chefbot-api.herokuapp.com/api/v1/';
 
 class UserService {
   async register(data) {
