@@ -3,7 +3,7 @@ import { Alert, View } from 'react-native';
 import { GiftedChat, Actions, Bubble } from 'react-native-gifted-chat';
 import chatService from '../../services/ChatService';
 import * as ImagePicker from 'expo-image-picker';
-import 'dayjs/locale/pt-br';
+require('dayjs/locale/pt-br');
 
 function randomId() {
   return Math.floor(Math.random() * 999999999999999999);
