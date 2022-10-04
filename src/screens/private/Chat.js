@@ -3,7 +3,12 @@ import { Alert, View } from 'react-native';
 import { GiftedChat, Actions, Bubble } from 'react-native-gifted-chat';
 import chatService from '../../services/ChatService';
 import * as ImagePicker from 'expo-image-picker';
+import { Audio } from 'expo-av';
+
+
 require('dayjs/locale/pt-br');
+
+let gravandoAudio = false;
 
 function randomId() {
   return Math.floor(Math.random() * 999999999999999999);
@@ -25,12 +30,78 @@ export function Chat({ route }) {
     },
   };
 
+  let recording = new Audio.Recording();
+  let gravandoAudio = false;
+
+  const blobToBase64 = (blob) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    return new Promise((resolve) => {
+      reader.onloadend = () => {
+        resolve(reader.result);
+      };
+    });
+  };
+
   const renderActions = props => {
+    async function startRecording() {
+      try {
+        recording = new Audio.Recording();
+        console.log('Requesting permissions..');
+        await Audio.requestPermissionsAsync();
+        await Audio.setAudioModeAsync({
+          allowsRecordingIOS: true,
+          playsInSilentModeIOS: true,
+        });
+        console.log('Starting recording..');
+        gravandoAudio = true;
+        await recording.prepareToRecordAsync(
+          (Audio.RecordingOptionsPresets.HIGH_QUALITY),
+        );
+        await recording.startAsync();
+        console.log('Recording started');
+      } catch (err) {
+        gravandoAudio = false;
+        console.error('Failed to start recording', err);
+      }
+    }
+
+    async function stopRecording() {
+      console.log('Stopping recording..');
+      await recording.stopAndUnloadAsync();
+      gravandoAudio = false;
+      const uri = recording.getURI();
+      console.log('Recording stopped and stored at', uri);
+
+      const fs = require("expo-file-system");
+      let buffer = fs.readDirectoryAsync(`${uri}`);
+      let fileY = new File([new Uint8Array(buffer)], 'file.mp3', {
+        type: 'audio/mpeg'
+      });
+      let form = new FormData();
+      form.append("file", fileY);
+
+      Alert.alert('Enviando aúdio...');
+      console.log(recording);
+      let payload = {
+        content: form,
+        type: 'audio',
+      };
+      chatService.send(payload).then(response => {
+        const data = response.data;
+        console.log(data);
+      });
+    }
+    console.log(recording);
+
     return (
       <Actions
         {...props}
         options={{
-          ['Image']: async props => {
+          ['Audio']: async props => {
+            gravandoAudio ? stopRecording() : startRecording();
+          },
+          ['Imagem']: async props => {
             try {
               let permissionResult =
                 await ImagePicker.requestMediaLibraryPermissionsAsync();
