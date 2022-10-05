@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { TextDemo } from '../screens/Demos';
+import { Receitas } from '../screens/private/Receitas';
 import { Settings } from '../screens/private/Settings';
 import { Chat } from '../screens/private/Chat';
 
@@ -25,8 +25,8 @@ function InsideTabs() {
       }}
     >
       <MainTab.Screen
-        name="TextDemo"
-        component={TextDemo}
+        name="Receitas"
+        component={Receitas}
         options={{
           title: 'Receitas',
           tabBarIcon: ({ color, focused, size }) => (

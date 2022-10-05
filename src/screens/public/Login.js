@@ -15,6 +15,8 @@ import { useLogin } from '../../util/Auth';
 import { Text } from '../../components/Text';
 import logo from '../../../assets/bright-logo.png';
 
+global.propGlobal;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -31,6 +33,7 @@ const styles = StyleSheet.create({
 
 export const Login = props => {
   const { submit, errors, email, setEmail, password, setPassword } = useLogin();
+  global.propGlobal = props;
 
   return (
     <KeyboardAvoidingView

@@ -30,26 +30,26 @@ export function Chat({ route }) {
       <Actions
         {...props}
         options={{
-          ['Image']: async props => {
+          ['Tirar Foto']: async props => {
             try {
               let permissionResult =
-                await ImagePicker.requestMediaLibraryPermissionsAsync();
+                await ImagePicker.requestCameraPermissionsAsync();
 
               if (permissionResult.granted === false) {
                 alert('Permission to access camera roll is required!');
                 return;
               }
-              const result = await ImagePicker.launchImageLibraryAsync({
+              const result = await ImagePicker.launchCameraAsync({
                 mediaTypes: ImagePicker.MediaTypeOptions.Images,
-                allowsMultipleSelection: false,
+                allowsMultipleSelection: true,
                 allowsEditing: true,
                 aspect: [1, 1],
-                quality: 1,
+                quality: 0.4,
                 base64: true,
               });
               if (result?.cancelled) {
                 console.log('User cancelled!');
-              }
+              }else
               Alert.alert('Imagem em análise...');
               let payload = {
                 content: result.base64,
@@ -99,6 +99,18 @@ export function Chat({ route }) {
   const send = messages => {
     for (let i = 0; i < messages.length; i++) {
       const { text, user } = messages[i];
+
+      if (text === 'Ok') {
+        let props = global.propGlobal;
+        let navigation = props.navigation;
+        Alert.alert('Buscando receitas...');
+        setTimeout(() => {
+          navigation.navigate('InsideApp', {
+            screen: 'Receitas',
+          });
+        }, 3000);
+        return null;
+      }
       let payload = {
         chatId: user._id,
         type: 'message',
